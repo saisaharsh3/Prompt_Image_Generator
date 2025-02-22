@@ -1,0 +1,19 @@
+# Ignore virtual environments
+venv/
+.env
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore large model files
+*.h5
+*.pth
+*.ckpt
+*.tflite
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files
+logs/
+*.log
