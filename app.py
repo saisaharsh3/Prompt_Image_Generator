@@ -16,11 +16,9 @@ pipe = StableDiffusionPipeline.from_pretrained(
     use_auth_token=False  
 )
 
-
 pipe = pipe.to(device)
 pipe.enable_attention_slicing()  
 pipe.enable_sequential_cpu_offload()  
-
 
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
@@ -38,8 +36,7 @@ def generate():
     try:
         
         realistic_prompt = f"{prompt}, photorealistic, highly detailed, 4k quality, natural lighting, sharp focus"
-        
-    
+            
         image = pipe(
             prompt=realistic_prompt,
             num_inference_steps=50,  
@@ -49,7 +46,6 @@ def generate():
             negative_prompt="cartoon, anime, painting, blurry, low quality, unrealistic, distorted"  
         ).images[0]
 
-    
         img_io = BytesIO()
         image.save(img_io, 'PNG')
         img_io.seek(0)
